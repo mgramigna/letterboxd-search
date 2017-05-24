@@ -11,7 +11,7 @@ Search by film title:
 ``` JavaScript
 const lb = require('letterboxd-search')
 
-lb.search('Before Sunrise'. res => {
+lb.search('Before Sunrise', res => {
     console.log(res)
     /*
     { title: 'Before Sunrise',
