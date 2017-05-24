@@ -1,0 +1,29 @@
+{
+  "name": "letterboxd-search",
+  "version": "1.0.0",
+  "description": "Scrapes the Letterboxd site for data about a given film.",
+  "main": "letterboxd-search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mgramigna/letterboxd-search.git"
+  },
+  "keywords": [
+    "letterboxd",
+    "film",
+    "search",
+    "movie",
+    "data"
+  ],
+  "author": "Matt Gramigna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mgramigna/letterboxd-search/issues"
+  },
+  "homepage": "https://github.com/mgramigna/letterboxd-search#readme",
+  "dependencies": {
+    "scraperjs": "^1.2.0"
+  }
+}
