@@ -1,6 +1,6 @@
 const scraperjs = require('scraperjs')
 module.exports.search = (title, cb) => {
-    const endpoint = title.toLowerCase().replace(/ /g,'-')
+    const endpoint = title.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/ /g,'-')
     scraperjs.StaticScraper.create(`https://letterboxd.com/film/${endpoint}`).scrape($ => {
         return {
             title: title,
