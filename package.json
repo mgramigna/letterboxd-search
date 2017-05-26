@@ -1,6 +1,6 @@
 {
   "name": "letterboxd-search",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Scrapes the Letterboxd site for data about a given film.",
   "main": "letterboxd-search.js",
   "scripts": {
