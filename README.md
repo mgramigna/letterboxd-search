@@ -6,7 +6,9 @@ Search for data about a film using Letterboxd. Scrapes the Letterboxd site for t
 $ npm install --save letterboxd-search
 ```
 
-Search by film title:
+Search by film title.
+
+**IMPORTANT**: Letterboxd might have multiple pages for the same named films. If you are getting the wrong movie title, try including the year (e.g. 'Whiplash 2014'):
 
 ``` JavaScript
 const lb = require('letterboxd-search')
@@ -18,6 +20,7 @@ lb.search('Before Sunrise', res => {
   url: 'https://letterboxd.com/film/before-sunrise',
   year: 1995,
   director: 'Richard Linklater',
+  runtimeMinutes: 105,
   tagline: 'Can the greatest romance of your life last only one night?',
   synopsis: 'A dialogue marathon of a film, this fairytale love story of an American boy and French girl.
   During a day and a night together in Vienna their two hearts collide.',
