@@ -2,11 +2,13 @@ const scraperjs = require('scraperjs')
 module.exports.search = (title, cb) => {
     const endpoint = title.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/ /g,'-')
     scraperjs.StaticScraper.create(`https://letterboxd.com/film/${endpoint}`).scrape($ => {
+        const rt = $('.text-link').text().trim()
         return {
             title: title,
             url: `https://letterboxd.com/film/${endpoint}`,
             year: parseInt($('#featured-film-header p small a').text()),
             director: $('#featured-film-header p a span').text(),
+            runtimeMinutes: parseInt(rt.substring(0,rt.indexOf('mins')-1)),
             tagline: $('.tagline').text(),
             synopsis: $('.truncate p').text(),
             cast: $('.cast-list p a span').toArray().map(a => {
