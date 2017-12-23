@@ -1,6 +1,6 @@
 {
   "name": "letterboxd-search",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Scrapes the Letterboxd site for data about a given film.",
   "main": "letterboxd-search.js",
   "scripts": {
@@ -26,6 +26,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "numeral": "^2.0.6",
+    "request": "^2.83.0",
     "request-promise": "^4.2.2"
   }
 }
