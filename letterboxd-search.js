@@ -25,6 +25,25 @@ function search(title) {
         '★★★★½': 4.5,
         '★★★★★': 5.0
       };
+      const ratings = $('.rating-histogram-bar a').toArray().map(a => {
+        let rating = a.children[0].data
+        let re = /[0-9]\s+/g
+        let index = re.exec(rating).index;
+        let data = rating.split(' ')
+        return {
+          stars: ratingsMap[data[0].substring(index+2)],
+          count: numeral(data[0].substring(0,index+1)).value(),
+          percentage: numeral(data[2].substring(1,data[2].indexOf('%'))).value()
+        }
+      });
+
+      let ratingsCount = 0;
+      let average = 0.0;
+      ratings.forEach(rating => {
+        average += rating.stars * rating.count;
+        ratingsCount += rating.count;
+      });
+
       let obj = {
         title: $('meta[name="twitter:title"]').attr('content'),
         url: $('meta[property="og:url"]').attr('content'),
@@ -45,18 +64,8 @@ function search(title) {
             lists: numeral($('.filmstat-lists a').text()).value(),
             likes: numeral($('.filmstat-likes a').text()).value()
         },
-        averageRating: numeral($('.display-rating').text()).value(),
-        ratings: $('.rating-histogram-bar a').toArray().map(a => {
-          let rating = a.children[0].data
-          let re = /[0-9]\s+/g
-          let index = re.exec(rating).index;
-          let data = rating.split(' ')
-          return {
-            stars: ratingsMap[data[0].substring(index+2)],
-            count: numeral(data[0].substring(0,index+1)).value(),
-            percentage: numeral(data[2].substring(1,data[2].indexOf('%'))).value()
-          }
-        }),
+        averageRating: average/ratingsCount,
+        ratings: ratings,
         backdropImage: $('meta[property="og:image"]').attr('content'),
         posterImage: $('.film-poster img').attr('src'),
         relatedFilms: $('.poster-list li div').toArray().map(a => {
